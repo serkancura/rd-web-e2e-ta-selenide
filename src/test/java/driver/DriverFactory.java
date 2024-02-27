@@ -42,6 +42,8 @@ public class DriverFactory {
         Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = false;
         Configuration.screenshots = false;
+        //Configuration.timeout = 10000;
+        //Configuration.pageLoadTimeout = 30000;
         Configuration.headless = Objects.equals(propertyManager.getProperty("HEADLESS"), "Y");
 
         browser = Objects.equals(propertyManager.getProperty("BROWSER"), null) ? "chrome" : propertyManager.getProperty("BROWSER");

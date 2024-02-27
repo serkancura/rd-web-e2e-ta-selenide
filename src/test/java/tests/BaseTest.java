@@ -4,7 +4,7 @@ import com.codeborne.selenide.Selenide;
 import driver.DriverFactory;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
-import pages.PageManager;
+import common.PageManager;
 
 public class BaseTest {
     protected PageManager pageManager;
