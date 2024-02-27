@@ -13,7 +13,6 @@ public class LoginPage extends BasePage{
     public SelenideElement txtUsername = $("input[data-test=\"username\"]");
     public SelenideElement txtPassword = $("input[data-test=\"password\"]");
     public SelenideElement btnLogin = $("input[data-test=\"login-button\"]");
-    public SelenideElement spnProduct = $("span.title");
     public SelenideElement lblLoginError = $("h3[data-test=\"error\"]");
 
     public LoginPage(String pageUrl) {
