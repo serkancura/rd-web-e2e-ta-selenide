@@ -34,7 +34,7 @@ public class LoginSteps extends BaseTest {
     }
 
     @Then("Login successfully")
-    public void loginSuccessfully() {
+    public void loginSuccessfully() throws InterruptedException {
         assertThat(pageManager.homePage.getUrl()).contains("inventory");
     }
 

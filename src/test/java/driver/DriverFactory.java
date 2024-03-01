@@ -4,8 +4,9 @@ import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,7 +44,8 @@ public class DriverFactory {
         Configuration.holdBrowserOpen = false;
         Configuration.screenshots = false;
         //Configuration.timeout = 10000;
-        Configuration.pageLoadTimeout = 30000;
+        //Configuration.pageLoadTimeout = 30000;
+
         Configuration.headless = Objects.equals(propertyManager.getProperty("HEADLESS"), "Y");
 
         browser = Objects.equals(propertyManager.getProperty("BROWSER"), null) ? "chrome" : propertyManager.getProperty("BROWSER");
@@ -51,6 +53,14 @@ public class DriverFactory {
         switch (browser) {
             case "CHROME":
                 Configuration.browser = Browsers.CHROME;
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--disable-extensions");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--start-incognito");
+                options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+                Configuration.browserCapabilities = capabilities;
                 break;
             case "EDGE":
                 Configuration.browser = Browsers.EDGE;
