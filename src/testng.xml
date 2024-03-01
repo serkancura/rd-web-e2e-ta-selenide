@@ -3,7 +3,7 @@
 <suite name="QATechTesting Test Suite" verbose="1" parallel="tests" thread-count="1" configfailurepolicy="continue">
     <test name="Navigate and Verify Home Page" annotations="JDK" preserve-order="true">
         <classes>
-            <class name="steps.TestRunner"/>
+            <class name="common.TestRunner"/>
         </classes>
     </test>
 </suite>

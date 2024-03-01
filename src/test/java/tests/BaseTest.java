@@ -22,6 +22,7 @@ public class BaseTest {
     @AfterMethod
     public void clearCookies() {
         DriverFactory.clearCookies();
+        DriverFactory.close();
     }
 
     @AfterClass

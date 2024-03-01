@@ -1,11 +1,11 @@
-package steps;
+package common;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"tests"},
+        glue = {"steps"},
         plugin = {
                 "pretty",
                 "summary",
