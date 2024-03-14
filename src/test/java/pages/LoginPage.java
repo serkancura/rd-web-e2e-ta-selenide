@@ -1,12 +1,11 @@
 package pages;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
-import driver.DriverFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static com.codeborne.selenide.Selenide.*;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends BasePage{
 
@@ -26,6 +25,7 @@ public class LoginPage extends BasePage{
     }
 
     public String getLoginError(){
+        lblLoginError.shouldBe(visible, Duration.ofSeconds(30));
         return lblLoginError.getText();
     }
 

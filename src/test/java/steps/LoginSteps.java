@@ -1,5 +1,6 @@
 package steps;
 
+import com.codeborne.selenide.testng.ScreenShooter;
 import common.Context;
 import common.PageManager;
 import common.ScenarioContext;
@@ -8,6 +9,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.annotations.Listeners;
 import tests.BaseTest;
 
 import java.io.FileReader;
@@ -16,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+@Listeners({ScreenShooter.class})
 public class LoginSteps extends BaseTest {
 
     PageManager pageManager = new PageManager();
