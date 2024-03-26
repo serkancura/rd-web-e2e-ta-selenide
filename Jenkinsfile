@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Cloning Git'){
             steps {
-                git branch: 'maind', credentialsId: '1', url: 'https://github.com/serkancura/rd-web-e2e-ta-selenide.git'
+                git branch: 'reporting', credentialsId: '1', url: 'https://github.com/serkancura/rd-web-e2e-ta-selenide.git'
             }
         }
         stage('Run Test'){
