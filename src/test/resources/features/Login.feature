@@ -9,12 +9,11 @@ Feature: As a User I want to Login
       | visual_user   | secret_sauce |
     Then Login successfully
 
-
   Scenario: Get data from file
     Given Open the web site
     When Get data on file and login and Getting error
 
-    Scenario: Login with social media account
+  Scenario: Login with social media account
       When User click google account
       Then Social Media Login page open
       When User input credentials
