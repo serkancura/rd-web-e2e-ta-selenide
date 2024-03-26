@@ -16,8 +16,8 @@ pipeline {
                sh 'mvn test'
             }
         }
-        stage ('Reporting') {
-            steps {
+      post {
+            always {
             allure includeProperties: false, jdk: 'jdk', results: [[path: 'target/allure-results']]
             }
         }
