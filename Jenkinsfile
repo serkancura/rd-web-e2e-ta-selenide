@@ -17,11 +17,9 @@ pipeline {
             }
         }
     }
-        post {
-             always {
-                allure includeProperties: false, jdk: 'jdk', results: [[path: 'target/allure-results']]
-            }
+    post {
+         always {
+            allure includeProperties: false, jdk: 'jdk', results: [[path: 'target/allure-results']]
         }
-
     }
 }
