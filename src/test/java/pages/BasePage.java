@@ -15,7 +15,6 @@ public abstract class BasePage {
     }
 
     public void open() {
-        logger.info("Browser açılıyor....");
         String url = propertyManager.getProperty("APP_URL") ;
         Selenide.open(url);
 
