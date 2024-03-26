@@ -1,6 +1,17 @@
 Feature: As a User I want to Login
   This feature includes Login tests
 
+  @login @failed
+  Scenario Outline: Successful Login
+    Given Open the web site
+    When Enter '<username>' and '<password>' and click login button
+    Then Login successfully
+
+    Examples:
+      | username      | password     |
+      | standard_user | secret_sauce |
+      | visual_user   | secret_sauce |
+
 
   Scenario: Successful Login 2
     Given Open the web site
