@@ -12,7 +12,8 @@ pipeline {
         }
         stage('Run Test'){
             steps {
-               sh 'mvn clean test'
+               sh 'mvn clean install'
+               sh 'mvn test'
             }
         }
         stage ('Reporting') {
