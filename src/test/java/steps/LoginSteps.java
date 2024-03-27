@@ -25,7 +25,7 @@ public class LoginSteps extends BaseTest {
     ScenarioContext scenarioContext = new ScenarioContext();
 
 
-    @Given("^Open the web site$")
+    @Given("Open the web site")
     public void openPage() {
         pageManager.loginPage.open();
     }
