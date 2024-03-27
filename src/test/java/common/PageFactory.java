@@ -8,7 +8,6 @@ public class PageFactory {
     static final Logger logger = Logger.getLogger(PageFactory.class);
 
     public static LoginPage buildLoginPage() {
-        logger.error("Page açılıyor....");
         return new LoginPage("/");
     }
 

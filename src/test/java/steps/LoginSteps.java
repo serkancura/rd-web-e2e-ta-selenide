@@ -10,7 +10,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.annotations.Listeners;
-import tests.BaseTest;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,7 +18,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 @Listeners({ScreenShooter.class})
-public class LoginSteps extends BaseTest {
+public class LoginSteps {
 
     PageManager pageManager = new PageManager();
     ScenarioContext scenarioContext = new ScenarioContext();
