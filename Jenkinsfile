@@ -20,7 +20,7 @@ pipeline {
     post {
          always {
             allure includeProperties: false, jdk: 'jdk', results: [[path: 'target/allure-results']]
-             sh 'docker-compose down'
+            step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StopAllServices'], useCustomDockerComposeFile: true])
         }
     }
 }
