@@ -7,7 +7,10 @@ pipeline {
     stages {
         stage('Run Docker Compose'){
             steps {
-                step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
+                step(
+                     def remoteUrl = [$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true]
+                     echo ${remoteUrl}
+                )
             }
         }
         stage('Run Test'){
