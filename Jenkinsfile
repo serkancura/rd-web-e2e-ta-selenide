@@ -3,6 +3,7 @@ pipeline {
     tools {
             maven 'mvn'
             jdk 'jdk'
+            docker 'docker '
     }
     stages {
         stage('Run Docker Compose'){
