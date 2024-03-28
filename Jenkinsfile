@@ -3,12 +3,12 @@ pipeline {
     tools {
             maven 'mvn'
             jdk 'jdk'
-            docker 'docker '
     }
     stages {
         stage('Run Docker Compose'){
             steps {
-                sh 'docker -v'
+                sh 'docker --version'
+                sh 'docker-compose --version'
                 sh 'docker-compose -f docker-compose.yml up -d'
             }
         }
