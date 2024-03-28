@@ -3,20 +3,34 @@
 # To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-v3-beta-channel.yml down`
 version: "3"
 services:
-  chrome:
-    image: selenium/node-chrome:4.16.1-20231219
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
   selenium-hub:
-    image: selenium/hub:4.16.1-20231219
+    image: seleniarm/hub:4.8.1-20230226
     container_name: selenium-hub
+    restart: always
+    privileged: true
     ports:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+    environment:
+      - JAVA_OPTS=-Djdk.httpclient.websocket.intermediateBufferSize=3000000
+
+  chrome_1:
+    image: seleniarm/node-chromium:4.8.1-20230226
+    container_name: chrome_1
+    restart: always
+    shm_size: 2gb
+    ports:
+      - "5556:5555"
+    environment:
+      - JAVA_OPTS=-Djdk.httpclient.websocket.intermediateBufferSize=3000000
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_GRID_URL=http://localhost:4444
+      - SE_NODE_MAX_SESSIONS=${PARALLEL:-20}
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_SESSION_TIMEOUT=720
+      - VNC_NO_PASSWORD=1
+

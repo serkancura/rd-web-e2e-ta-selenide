@@ -5,6 +5,9 @@ pipeline {
             jdk 'jdk'
     }
     stages {
+        stage('Run Docker Compose'){
+            sh 'docker-compose up -d'
+        }
         stage('Run Test'){
             steps {
                sh 'mvn clean'
