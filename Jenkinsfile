@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage('Run Docker Compose'){
             steps {
+                sh 'sudo apt install docker-compose'
                 sh 'docker-compose -f docker-compose.yml up -d'
             }
         }
