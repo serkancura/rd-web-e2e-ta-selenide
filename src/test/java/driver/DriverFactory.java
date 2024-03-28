@@ -1,26 +1,19 @@
 package driver;
 
-import com.codeborne.selenide.Browsers;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.*;
 import com.codeborne.selenide.testng.ScreenShooter;
+import com.google.common.collect.ImmutableMap;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropertyManager;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 import java.util.Objects;
-
-import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class DriverFactory {
 
@@ -34,7 +27,6 @@ public class DriverFactory {
 
         logger.info("Driver yükleniyor....");
         // Check if remote driver
-
         if (Objects.equals(propertyManager.getProperty("BROWSER"), "REMOTE")) {
             initRemoteDriver();
             return;
@@ -72,7 +64,6 @@ public class DriverFactory {
             case "FIREFOX":
                 Configuration.browser = Browsers.FIREFOX;
                 break;
-
             case "SAFARI":
                 Configuration.browser = Browsers.SAFARI;
                 break;
@@ -89,15 +80,19 @@ public class DriverFactory {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("browserName", browserName);
-        capabilities.setCapability("screenResolution", "1920x1080");
+        capabilities.setBrowserName("chrome");
+        capabilities.setCapability("selenoid:options", ImmutableMap.of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
 
 
-        try {
-            RemoteWebDriver driver = new RemoteWebDriver(new URL(host), capabilities);
-            setWebDriver(driver);
-            String sessionId = driver.getSessionId().toString();
-        } catch (MalformedURLException ignored) {
-        }
+        Configuration.browser = browserName;
+        Configuration.headless = Objects.equals(propertyManager.getProperty("HEADLESS"), "Y");
+        Configuration.remote = host;
+        Configuration.browserCapabilities = capabilities;
+        Configuration.fileDownload = FileDownloadMode.HTTPGET;
+        Configuration.proxyEnabled = false;
     }
 
     public static WebDriver currentDriver() {
