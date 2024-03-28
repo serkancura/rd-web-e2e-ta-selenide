@@ -10,10 +10,10 @@ Feature: As a User I want to Login
 #      | visual_user   | secret_sauce |
 #    Then Login successfully
 #
-#  @login
-#  Scenario: Get data from file
-#    Given Open the web site
-#    When Get data on file and login and Getting error
+  @login
+  Scenario: Get data from file
+    Given Open the web site
+    When Get data on file and login and Getting error
 
   @login
   Scenario: Login with social media account
