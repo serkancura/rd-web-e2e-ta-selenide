@@ -7,19 +7,20 @@ pipeline {
     stages {
         stage('Run Docker Compose'){
             steps {
-                sh 'docker-compose up -d'
+                sh 'docker-compose -f docker-compose.yml up -d'
             }
         }
         stage('Run Test'){
             steps {
-               sh 'mvn clean'
-               sh 'mvn install'
+               sh 'mvn build'
+               sh 'mvn clean test'
             }
         }
     }
     post {
          always {
             allure includeProperties: false, jdk: 'jdk', results: [[path: 'target/allure-results']]
+             sh 'docker-compose down'
         }
     }
 }
