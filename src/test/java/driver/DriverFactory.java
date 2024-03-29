@@ -73,7 +73,7 @@ public class DriverFactory {
     }
 
     public static void initRemoteDriver() {
-        String host = "http://localhost:4444/wd/hub";
+        String host = "http://selenium-hub:4444/wd/hub";
 
         String browserName = "CHROME";
 
