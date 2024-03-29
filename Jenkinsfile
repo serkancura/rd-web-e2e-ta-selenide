@@ -23,7 +23,7 @@ pipeline {
     post {
          always {
             allure includeProperties: false, jdk: 'jdk', results: [[path: 'target/allure-results']]
-            step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StopAllServices'], useCustomDockerComposeFile: true])
+           // step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StopAllServices'], useCustomDockerComposeFile: true])
         }
     }
 }
