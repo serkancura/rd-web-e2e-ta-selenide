@@ -9,23 +9,23 @@ import common.PageManager;
 public class BaseTest {
     protected PageManager pageManager;
     protected SoftAssert softAssert;
-    @BeforeClass
+    @BeforeSuite
     public void setUp() {
         pageManager = new PageManager();
         softAssert = new SoftAssert();
     }
-    @BeforeMethod
+    @BeforeTest
     public void openDriver() {
         Selenide.open();
     }
 
-    @AfterMethod
+    @AfterTest
     public void clearCookies() {
         DriverFactory.clearCookies();
         DriverFactory.close();
     }
 
-    @AfterClass
+    @AfterSuite
     public void tearDown() {
         DriverFactory.close();
     }
