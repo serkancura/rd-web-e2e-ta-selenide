@@ -90,4 +90,27 @@ public class LoginSteps {
     public void userInputCredentials() {
     }
 
+    @Then("Product list container is shown")
+    public void productListContainerIsShown() {
+        assertThat(pageManager.homePage.listProductContainer.isDisplayed()).isTrue();
+    }
+
+    @When("Click {string} button on Product Page")
+    public void clickButton(String btnText) {
+        pageManager.homePage.clickButton(btnText);
+    }
+
+    @Then("Check {string} button is shown")
+    public void checkButtonIsShown(String btnText) {
+        switch (btnText){
+            case "remove":
+                assertThat(pageManager.homePage.btnRemoveCartSauceLabsBackpack.isDisplayed()).isTrue();
+                break;
+            case "add to cart":
+                assertThat(pageManager.homePage.btnAddCartSauceLabsBackpack.isDisplayed()).isTrue();
+                break;
+            default:
+                throw new Error("Button not found");
+        }
+    }
 }

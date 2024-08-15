@@ -21,7 +21,6 @@ public abstract class BasePage {
     }
 
     public String getUrl() throws InterruptedException {
-        //Thread.sleep(2000);
         return WebDriverRunner.getWebDriver().getCurrentUrl();
     }
 }
