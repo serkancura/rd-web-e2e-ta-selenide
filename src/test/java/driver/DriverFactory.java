@@ -70,6 +70,7 @@ public class DriverFactory {
             default:
                 Configuration.browser = Browsers.CHROME;
         }
+        logger.error("Driver açıldı");
     }
 
     public static void initRemoteDriver() {
