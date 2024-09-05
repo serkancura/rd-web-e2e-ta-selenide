@@ -13,8 +13,7 @@ import io.cucumber.testng.CucumberOptions;
                 // "json:build/cucumber-reports/CucumberTestReport.json",
                 "rerun:build/cucumber-reports/rerun.txt",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
-        },
-        tags = "@login"
+        }
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 }
