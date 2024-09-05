@@ -5,9 +5,13 @@ pipeline {
             jdk 'jdk'
     }
     stages {
+        stage('Maven Compile'){
+            steps {
+                sh 'mvn compile'
+            }
+        }
         stage('Run Test'){
             steps {
-               sh 'mvn compile'
                sh 'mvn clean test'
             }
         }
